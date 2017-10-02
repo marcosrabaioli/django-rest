@@ -3,6 +3,7 @@ from .serializers import MusicSerializer, AlbumSerializer, MemberSerializer, Ban
 from rest_framework import generics
 from rest_framework.authentication import SessionAuthentication
 from rest_framework.permissions import IsAdminUser, IsAuthenticated, AllowAny
+from django_filters import rest_framework as filters
 
 
 class MusicList(generics.ListCreateAPIView):
@@ -11,6 +12,8 @@ class MusicList(generics.ListCreateAPIView):
     serializer_class = MusicSerializer
     authentication_classes = [SessionAuthentication]
     permission_classes = (IsAuthenticated, )
+    filter_backends = (filters.DjangoFilterBackend,)
+    filter_fields = '__all__'
 
 
 class MusicDetail(generics.RetrieveUpdateDestroyAPIView):
@@ -18,6 +21,8 @@ class MusicDetail(generics.RetrieveUpdateDestroyAPIView):
     serializer_class = MusicSerializer
     authentication_classes = [SessionAuthentication]
     permission_classes = (IsAuthenticated, )
+    filter_backends = (filters.DjangoFilterBackend,)
+    filter_fields = '__all__'
 
 
 class AlbumList(generics.ListCreateAPIView):
@@ -26,6 +31,9 @@ class AlbumList(generics.ListCreateAPIView):
     serializer_class = AlbumSerializer
     authentication_classes = [SessionAuthentication]
     permission_classes = (IsAuthenticated, )
+    filter_backends = (filters.DjangoFilterBackend,)
+    filter_fields = '__all__'
+
 
 
 class AlbumDetail(generics.RetrieveUpdateDestroyAPIView):
@@ -33,6 +41,8 @@ class AlbumDetail(generics.RetrieveUpdateDestroyAPIView):
     serializer_class = AlbumSerializer
     authentication_classes = [SessionAuthentication]
     permission_classes = (IsAuthenticated, )
+    filter_backends = (filters.DjangoFilterBackend,)
+    filter_fields = '__all__'
 
 
 class BandList(generics.ListCreateAPIView):
@@ -41,6 +51,8 @@ class BandList(generics.ListCreateAPIView):
     serializer_class = BandSerializer
     authentication_classes = [SessionAuthentication]
     permission_classes = (IsAuthenticated, )
+    filter_backends = (filters.DjangoFilterBackend,)
+    filter_fields = '__all__'
 
 
 class BandDetail(generics.RetrieveUpdateDestroyAPIView):
@@ -48,6 +60,8 @@ class BandDetail(generics.RetrieveUpdateDestroyAPIView):
     serializer_class = BandSerializer
     authentication_classes = [SessionAuthentication]
     permission_classes = (IsAuthenticated, )
+    filter_backends = (filters.DjangoFilterBackend,)
+    filter_fields = '__all__'
 
 
 class MemberList(generics.ListCreateAPIView):
@@ -56,6 +70,8 @@ class MemberList(generics.ListCreateAPIView):
     serializer_class = MemberSerializer
     authentication_classes = [SessionAuthentication]
     permission_classes = (IsAuthenticated, )
+    filter_backends = (filters.DjangoFilterBackend,)
+    filter_fields = '__all__'
 
 
 class MemberDetail(generics.RetrieveUpdateDestroyAPIView):
@@ -63,3 +79,5 @@ class MemberDetail(generics.RetrieveUpdateDestroyAPIView):
     serializer_class = MemberSerializer
     authentication_classes = [SessionAuthentication]
     permission_classes = (IsAuthenticated, )
+    filter_backends = (filters.DjangoFilterBackend,)
+    filter_fields = '__all__'
