@@ -8,6 +8,15 @@ from oauth2_provider.contrib.rest_framework import TokenHasReadWriteScope, Token
 from rest_framework.authentication import SessionAuthentication
 
 
+class AlbumFilter(filters.FilterSet):
+
+    date_gte = filters.DateFilter(name="date", lookup_expr='gte')
+    date_lte = filters.DateFilter(name="date", lookup_expr='lte')
+
+    class Meta:
+
+        model = Album
+        fields = '__all__'
 
 class MusicList(generics.ListCreateAPIView):
 
@@ -34,7 +43,7 @@ class AlbumList(generics.ListCreateAPIView):
     authentication_classes = [OAuth2Authentication, SessionAuthentication]
     permission_classes = [Or(IsAdminUser, TokenHasReadWriteScope)]
     filter_backends = (filters.DjangoFilterBackend,)
-    filter_fields = '__all__'
+    filter_class = AlbumFilter
 
 
 class AlbumDetail(generics.RetrieveUpdateDestroyAPIView):
